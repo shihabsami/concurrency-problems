@@ -3,11 +3,11 @@ CFLAGS = -Wall -std=c11 -pedantic -g -pthread
 
 all: simulation
 
-simulation: main.o
+simulation: readers_writers.o
 	$(CC) $(CFLAGS) -o $@ $<
 
-main.o: main.c
+readers_writers.o: readers_writers.c
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	$(RM) simulation main.o
+	$(RM) simulation *.o
