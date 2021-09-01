@@ -1,4 +1,5 @@
 #define _XOPEN_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -37,8 +38,8 @@ int main() {
     timer = time(NULL) + 10;
 
     for (int i = 0; i < 5; i++) {
-        producer_return = pthread_create(&producer[i], NULL, produce, (void*)(&indices[i]));
-        consumer_return = pthread_create(&consumer[i], NULL, consume, (void*)(&indices[i]));
+        producer_return = pthread_create(&producer[i], NULL, produce, (void*) (&indices[i]));
+        consumer_return = pthread_create(&consumer[i], NULL, consume, (void*) (&indices[i]));
     }
 
     // first signal to produce from the main thread

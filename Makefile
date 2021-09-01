@@ -1,13 +1,13 @@
-cc = GCC
-CFLAGS = -Wall -std=c11 -pedantic -g -pthread
+CXX = g++
+CXXFLAGS = -Wall -Werror -std=c++11 -g -pthread
 
 all: simulation
 
-simulation: readers_writers.o
-	$(CC) $(CFLAGS) -o $@ $<
+simulation: sleeping_barber.o
+	$(CXX) $(CXXFLAGS) -o $@ $<
 
-readers_writers.o: readers_writers.c
-	$(CC) $(CFLAGS) -c $<
+sleeping_barber.o: sleeping_barber.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
 	$(RM) simulation *.o
