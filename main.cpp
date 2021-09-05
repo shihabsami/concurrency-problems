@@ -166,7 +166,7 @@ int main() {
 NO_RETURN void run() {
     pthread_t customer_thread;
     while (true) {
-        usleep(random() % 200000); // a customer arrives every 100-300 milliseconds
+        usleep(random() % 200000 + 100000); // a customer arrives every 100-300 milliseconds
         pthread_create(&customer_thread, nullptr, customer, nullptr);
     }
 }
@@ -198,7 +198,7 @@ NO_RETURN void* barber(NO_USE void* arg) {
         wait_queue->pop_front();
         pthread_mutex_unlock(&wait_mutex);
         cout << COLOR_GREEN << "cutting hair" << COLOR_RESET << endl; // service the customer thread
-        usleep(random() % 100000 + 200000); // a customer is serviced every 100-300 milliseconds
+        usleep(random() % 200000 + 100000); // a customer is serviced every 100-300 milliseconds
     }
 }
 
