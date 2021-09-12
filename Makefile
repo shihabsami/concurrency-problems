@@ -1,11 +1,19 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -std=c++11 -g -pthread
+CXXFLAGS = -Wall -Werror -std=c++17 -g -pthread
 
-readers_writers: main.cpp
+all: rw
+
+rw: main.cpp
 	$(CXX) $(CXXFLAGS) -DREADERS_WRITERS -o simulation $<
 
-sleeping_barbers: main.cpp
+sb: main.cpp
 	$(CXX) $(CXXFLAGS) -DSLEEPING_BARBERS -o simulation $<
+
+rwc: main.cpp
+	$(CXX) $(CXXFLAGS) -DREADERS_WRITERS -DCOLOUR_PRINT -o simulation $<
+
+sbc: main.cpp
+	$(CXX) $(CXXFLAGS) -DSLEEPING_BARBERS -DCOLOUR_PRINT -o simulation $<
 
 clean:
 	$(RM) simulation *.o
